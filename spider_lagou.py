@@ -1,4 +1,4 @@
-import time
+import re
 import json
 
 from urllib import request
@@ -19,14 +19,15 @@ def get_content(url, city, district):
               'Cache-Control': 'no-cache',
               'Connection': 'Keep-Alive',
               'Referer': referer_url,  # 拉钩接口必须要有的参数
-              'Cookie': 'JSESSIONID=ABAAABAAADEAAFI1D71E6E4769899139FC8BEA774291C35;',
+              'Cookie': 'JSESSIONID=ABAAABAAAFCAAEGE8FFB426BFB1AA73B63B9C41B2B3DAD9;',
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063',
               'Origin': 'https://www.lagou.com',
               }
+
     i = 0
     while i < 10:
         body = parse.urlencode(
-            {"first": "false", "pn": i, "kd": "PHP"}).encode(encoding="UTF8")
+            {"first": "false", "pn": 1, "kd": "PHP"}).encode(encoding="UTF8")
         res = request.Request(url, data=body, headers=header)
         html = request.urlopen(res)
         if html:
@@ -43,8 +44,7 @@ def get_content(url, city, district):
                 salary = info['salary']  # 薪资
                 print(company + "  |  " + position + "  |  " + work_year + "  |  " + education + "  |  " + salary)
                 print("============================================================")
-        time.sleep(2)
-    i += 1
+        i += 1
 
 
 def get_url(city, district):
