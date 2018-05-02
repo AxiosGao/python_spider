@@ -5,4 +5,6 @@
 
 > spider_lagou.py 根据输入城市，区域，抓取php工作
 
-> spider_58zufang.py 抓取租房信息，并写入excel文件
+> spider_58zufang.py 抓取58同城个人房源租房信息，并写入excel文件
+
+> spider_anjuke.py 抓取安居客网站租房信息，并写入excel
